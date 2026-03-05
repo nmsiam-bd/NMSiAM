@@ -3,6 +3,9 @@
             background-color: #030303;
             color: #e5e7eb;
             overflow-x: hidden;
+            /* Performance Fix: Prevent white flash on resize/zoom */
+            width: 100%;
+            height: 100%;
         }
 
         /* Custom Scrollbar */
@@ -14,16 +17,22 @@
         /* Selection Color */
         ::selection { background: rgba(59, 130, 246, 0.3); color: white; }
 
-        /* Fluid Background */
+        /* Fluid Background - OPTIMIZED */
         .gradient-bg {
-            position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: -1;
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1;
             background: #000; overflow: hidden;
+            /* Force GPU layer */
+            transform: translateZ(0);
         }
         .g-blob {
             position: absolute; width: 800px; height: 800px;
             background: radial-gradient(circle, rgba(60, 20, 150, 0.15) 0%, rgba(0, 0, 0, 0) 70%);
-            border-radius: 50%; filter: blur(100px); opacity: 0.6;
+            border-radius: 50%; filter: blur(80px); /* Reduced blur slightly for performance */
+            opacity: 0.6;
             animation: moveBlobs 25s infinite alternate;
+            /* Performance Fixes */
+            will-change: transform;
+            transform: translateZ(0);
         }
         .g-blob:nth-child(1) { top: -20%; left: -20%; background: radial-gradient(circle, rgba(59, 130, 246, 0.2) 0%, rgba(0, 0, 0, 0) 70%); }
         .g-blob:nth-child(2) { bottom: -20%; right: -20%; background: radial-gradient(circle, rgba(6, 182, 212, 0.2) 0%, rgba(0, 0, 0, 0) 70%); animation-duration: 30s; }
@@ -33,22 +42,30 @@
             100% { transform: translate(100px, -50px) scale(1.1); }
         }
 
-        /* Glass Components */
+        /* Glass Components - OPTIMIZED */
         .glass-panel {
             background: rgba(20, 20, 20, 0.4);
             backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
             border: 1px solid rgba(255, 255, 255, 0.05);
             box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+            /* GPU Acceleration */
+            transform: translateZ(0);
+            backface-visibility: hidden;
         }
 
         .glass-card {
             background: linear-gradient(180deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%);
             border: 1px solid rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(10px); transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            backdrop-filter: blur(10px); 
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), background 0.4s, border-color 0.4s;
+            /* GPU Acceleration */
+            transform: translateZ(0);
+            backface-visibility: hidden;
         }
 
         .glass-card:hover {
-            border-color: rgba(255, 255, 255, 0.15); transform: translateY(-5px);
+            border-color: rgba(255, 255, 255, 0.15); 
+            transform: translateY(-5px) translateZ(0); /* Maintain Z */
             background: linear-gradient(180deg, rgba(255,255,255,0.06) 0%, rgba(255,255,255,0.02) 100%);
             box-shadow: 0 20px 40px -10px rgba(0,0,0,0.5);
         }
