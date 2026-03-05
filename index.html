@@ -53,7 +53,91 @@
             }
         }
     </script>
-    </head>
+
+    <style>
+        body {
+            background-color: #030303;
+            color: #e5e7eb;
+            overflow-x: hidden;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #0a0a0a; }
+        ::-webkit-scrollbar-thumb { background: #333; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #555; }
+
+        /* Selection Color */
+        ::selection { background: rgba(59, 130, 246, 0.3); color: white; }
+
+        /* Fluid Background */
+        .gradient-bg {
+            position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: -1;
+            background: #000; overflow: hidden;
+        }
+        .g-blob {
+            position: absolute; width: 800px; height: 800px;
+            background: radial-gradient(circle, rgba(60, 20, 150, 0.15) 0%, rgba(0, 0, 0, 0) 70%);
+            border-radius: 50%; filter: blur(100px); opacity: 0.6;
+            animation: moveBlobs 25s infinite alternate;
+        }
+        .g-blob:nth-child(1) { top: -20%; left: -20%; background: radial-gradient(circle, rgba(59, 130, 246, 0.2) 0%, rgba(0, 0, 0, 0) 70%); }
+        .g-blob:nth-child(2) { bottom: -20%; right: -20%; background: radial-gradient(circle, rgba(6, 182, 212, 0.2) 0%, rgba(0, 0, 0, 0) 70%); animation-duration: 30s; }
+
+        @keyframes moveBlobs {
+            0% { transform: translate(0, 0) scale(1); }
+            100% { transform: translate(100px, -50px) scale(1.1); }
+        }
+
+        /* Glass Components */
+        .glass-panel {
+            background: rgba(20, 20, 20, 0.4);
+            backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .glass-card {
+            background: linear-gradient(180deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px); transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .glass-card:hover {
+            border-color: rgba(255, 255, 255, 0.15); transform: translateY(-5px);
+            background: linear-gradient(180deg, rgba(255,255,255,0.06) 0%, rgba(255,255,255,0.02) 100%);
+            box-shadow: 0 20px 40px -10px rgba(0,0,0,0.5);
+        }
+
+        /* Holographic Text */
+        .text-holographic {
+            background: linear-gradient(135deg, #fff 0%, #a5b4fc 50%, #67e8f9 100%);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+        }
+
+        /* Scroll Reveal Animation Classes */
+        .reveal-up {
+            opacity: 0; transform: translateY(30px); transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
+        }
+        .reveal-up.active { opacity: 1; transform: translateY(0); }
+
+        /* Capability Active State */
+        .cap-active {
+            background: linear-gradient(180deg, rgba(59, 130, 246, 0.1) 0%, rgba(0,0,0,0) 100%) !important;
+            border-color: rgba(59, 130, 246, 0.4) !important;
+            box-shadow: 0 0 30px rgba(59, 130, 246, 0.15);
+        }
+        .cap-active .bg-icon {
+            opacity: 0.15 !important; transform: scale(1.2) rotate(10deg);
+        }
+
+        /* Typing Cursor */
+        .typing-cursor::after {
+            content: '|'; animation: blink 1s infinite;
+        }
+        @keyframes blink { 50% { opacity: 0; } }
+    </style>
+</head>
 <body class="antialiased">
 
     <!-- Fluid Background -->
@@ -311,7 +395,7 @@
         </div>
     </section>
 
-    <!-- ABOUT N M SiAM (UPDATED: STACKED LAYOUT + PERF FIX) -->
+    <!-- ABOUT N M SiAM (UPDATED LAYOUT: Desktop Right, Mobile Bottom) -->
     <section id="about" class="py-24 px-6 max-w-7xl mx-auto relative overflow-hidden">
         <!-- Abstract Bg -->
         <div class="absolute top-1/4 left-0 w-96 h-96 bg-purple-600/10 rounded-full blur-[100px] -z-10"></div>
@@ -319,11 +403,11 @@
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             
             <!-- Company Identity & Philosophy Wrapper -->
-            <!-- DESKTOP & MOBILE: Stacked Layout -->
-            <div class="reveal-up flex flex-col items-center gap-6 w-full max-w-sm mx-auto lg:ml-0">
+            <!-- Flex Column on Mobile, Flex Row on Desktop -->
+            <div class="reveal-up flex flex-col lg:flex-row items-center gap-8 lg:gap-12 w-full max-w-4xl mx-auto lg:ml-0">
                 
                 <!-- 1. Logo Section -->
-                <div class="relative group w-full shrink-0">
+                <div class="relative group w-full max-w-sm shrink-0">
                     <!-- Background Blur -->
                     <div class="absolute inset-0 bg-gradient-to-r from-blue-500 to-purple-600 rounded-3xl blur-xl opacity-20 group-hover:opacity-40 transition duration-700"></div>
                     <!-- Glass Card -->
@@ -344,8 +428,8 @@
                     </div>
                 </div>
 
-                <!-- 2. Philosophy Quote (Stacked Bottom) -->
-                <div class="glass-panel p-6 rounded-2xl border border-white/10 shadow-2xl w-full relative z-10 text-center">
+                <!-- 2. Philosophy Quote (Right on Desktop, Bottom on Mobile) -->
+                <div class="glass-panel p-6 rounded-2xl border border-white/10 shadow-2xl w-full max-w-sm lg:max-w-xs relative z-10">
                     <p class="text-gray-300 italic text-sm">"Code is poetry written for machines to empower humans."</p>
                     <p class="text-blue-500 text-[10px] uppercase mt-2 tracking-widest">- Our Philosophy</p>
                 </div>
@@ -698,6 +782,117 @@
             </div>
         </div>
     </footer>
-      <script src="script.js"></script>
+
+    <!-- Scripts -->
+    <script>
+        // 1. Mouse Move Glow Effect
+        document.addEventListener('mousemove', (e) => {
+            const cards = document.querySelectorAll('.glass-card, .glass-panel, .btn-glow');
+            cards.forEach(card => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                
+                if (window.getComputedStyle(card).opacity > 0) {
+                    card.style.background = `radial-gradient(600px circle at ${x}px ${y}px, rgba(255,255,255,0.04), transparent 40%)`;
+                    // Keep base background if set
+                    if(card.classList.contains('glass-card') && !card.classList.contains('cap-active')) {
+                         card.style.backgroundColor = "transparent";
+                    }
+                }
+            });
+        });
+
+        // 2. Select/Deselect Capabilities
+        document.addEventListener('click', (e) => {
+            const clickedCard = e.target.closest('.capability-card');
+            const allCards = document.querySelectorAll('.capability-card');
+
+            if (clickedCard) {
+                allCards.forEach(c => c.classList.remove('cap-active'));
+                clickedCard.classList.add('cap-active');
+            } else {
+                allCards.forEach(c => c.classList.remove('cap-active'));
+            }
+        });
+
+        // 3. Scroll Reveal Animation
+        const revealElements = document.querySelectorAll('.reveal-up');
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    revealObserver.unobserve(entry.target); 
+                }
+            });
+        }, { threshold: 0.1 });
+
+        revealElements.forEach(el => revealObserver.observe(el));
+
+        // 4. Stats Counter
+        const statsSection = document.getElementById('stats-section');
+        const counters = document.querySelectorAll('.counter');
+        let started = false;
+
+        const startCounters = () => {
+            counters.forEach(counter => {
+                const target = +counter.getAttribute('data-target');
+                const duration = 2000; 
+                const increment = target / (duration / 16);
+                
+                let current = 0;
+                const updateCounter = () => {
+                    current += increment;
+                    if (current < target) {
+                        counter.innerText = Math.ceil(current);
+                        requestAnimationFrame(updateCounter);
+                    } else {
+                        counter.innerText = target;
+                    }
+                };
+                updateCounter();
+            });
+        };
+
+        const statsObserver = new IntersectionObserver((entries) => {
+            if (entries[0].isIntersecting && !started) {
+                startCounters();
+                started = true;
+            }
+        }, { threshold: 0.5 });
+        statsObserver.observe(statsSection);
+
+        // 5. Typing Effect for Hero
+        const textElement = document.getElementById('typing-text');
+        const words = ["Intelligence.", "Innovation.", "Experiences."];
+        let wordIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+
+        function type() {
+            const currentWord = words[wordIndex];
+            
+            if (isDeleting) {
+                textElement.textContent = currentWord.substring(0, charIndex - 1);
+                charIndex--;
+            } else {
+                textElement.textContent = currentWord.substring(0, charIndex + 1);
+                charIndex++;
+            }
+
+            if (!isDeleting && charIndex === currentWord.length) {
+                isDeleting = true;
+                setTimeout(type, 2000); // Pause at end
+            } else if (isDeleting && charIndex === 0) {
+                isDeleting = false;
+                wordIndex = (wordIndex + 1) % words.length;
+                setTimeout(type, 500); // Pause before new word
+            } else {
+                setTimeout(type, isDeleting ? 100 : 150);
+            }
+        }
+        document.addEventListener('DOMContentLoaded', type);
+
+    </script>
 </body>
 </html>
