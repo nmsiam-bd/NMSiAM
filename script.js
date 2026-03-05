@@ -1,25 +1,41 @@
-    <!-- Scripts -->
-        // 1. Mouse Move Glow Effect - OPTIMIZED for Performance
-        const cards = document.querySelectorAll('.glass-card, .glass-panel, .btn-glow');
-        
+
+        // 1. Optimized Mouse Move Glow Effect using requestAnimationFrame
+        let mouseX = 0, mouseY = 0;
+        let isGlowUpdateScheduled = false;
+
         document.addEventListener('mousemove', (e) => {
-            // Using requestAnimationFrame to throttle the expensive DOM updates
-            requestAnimationFrame(() => {
-                cards.forEach(card => {
-                    const rect = card.getBoundingClientRect();
-                    const x = e.clientX - rect.left;
-                    const y = e.clientY - rect.top;
-                    
-                    if (window.getComputedStyle(card).opacity > 0) {
-                        card.style.background = `radial-gradient(600px circle at ${x}px ${y}px, rgba(255,255,255,0.04), transparent 40%)`;
-                        // Keep base background if set
-                        if(card.classList.contains('glass-card') && !card.classList.contains('cap-active')) {
-                             card.style.backgroundColor = "transparent";
-                        }
-                    }
-                });
-            });
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+
+            if (!isGlowUpdateScheduled) {
+                window.requestAnimationFrame(updateGlowEffect);
+                isGlowUpdateScheduled = true;
+            }
         });
+
+        function updateGlowEffect() {
+            const cards = document.querySelectorAll('.glass-card, .glass-panel, .btn-glow');
+            
+            cards.forEach(card => {
+                // Optimization: Check if element is roughly in view before calculating
+                const rect = card.getBoundingClientRect();
+                
+                // Only calculate if the card is visible in the viewport
+                if (rect.bottom > 0 && rect.top < window.innerHeight) {
+                    const x = mouseX - rect.left;
+                    const y = mouseY - rect.top;
+                    
+                    // Simple check without getComputedStyle for performance
+                    card.style.background = `radial-gradient(600px circle at ${x}px ${y}px, rgba(255,255,255,0.04), transparent 40%)`;
+                    
+                    if(card.classList.contains('glass-card') && !card.classList.contains('cap-active')) {
+                         card.style.backgroundColor = "transparent";
+                    }
+                }
+            });
+
+            isGlowUpdateScheduled = false;
+        }
 
         // 2. Select/Deselect Capabilities
         document.addEventListener('click', (e) => {
