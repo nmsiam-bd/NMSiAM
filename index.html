@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>N M SiAM | Future-Ready Digital Architect</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts: Space Grotesk (Headings) & Outfit (Body) -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Outfit', 'sans-serif'],
+                        display: ['Space Grotesk', 'sans-serif'],
+                    },
+                    colors: {
+                        dark: '#050505',
+                    },
+                    animation: {
+                        'float': 'float 8s ease-in-out infinite',
+                        'scroll': 'scroll 30s linear infinite',
+                        'pulse-glow': 'pulseGlow 3s infinite',
+                        'slide-up': 'slideUp 0.5s ease-out forwards',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-20px)' },
+                        },
+                        scroll: {
+                            '0%': { transform: 'translateX(0)' },
+                            '100%': { transform: 'translateX(-50%)' },
+                        },
+                        pulseGlow: {
+                            '0%, 100%': { opacity: 0.5, transform: 'scale(1)' },
+                            '50%': { opacity: 1, transform: 'scale(1.05)' },
+                        },
+                        slideUp: {
+                            '0%': { transform: 'translateY(100%)', opacity: 0 },
+                            '100%': { transform: 'translateY(0)', opacity: 1 },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+   <link href="style.css" rel="stylesheet">
+</head>
+<body class="antialiased">
+
+    <!-- Fluid Background -->
+    <div class="gradient-bg">
+        <div class="g-blob"></div>
+        <div class="g-blob"></div>
+        <div class="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 brightness-100 contrast-150"></div>
+    </div>
+
+    <!-- Floating Navbar -->
+    <div class="fixed top-6 w-full z-50 flex justify-center px-4">
+        <nav class="glass-panel px-6 py-3 md:px-8 md:py-4 rounded-full flex items-center gap-12 transition-all duration-300 shadow-[0_0_20px_rgba(0,0,0,0.5)]">
+            <div class="text-xl md:text-2xl font-display font-bold tracking-tight flex items-center gap-2">
+                N M SiAM <span class="text-blue-500 text-3xl animate-pulse">.</span>
+            </div>
+            
+            <div class="hidden md:flex gap-8 text-xs md:text-sm font-medium text-gray-400 uppercase tracking-widest">
+                <a href="#home" class="hover:text-white transition">Vision</a>
+                <a href="#projects" class="hover:text-white transition">Work</a>
+                <a href="#about" class="hover:text-white transition">Company</a>
+                <a href="#blog" class="hover:text-white transition">Blog</a>
+                <a href="#contact" class="hover:text-white transition">Connect</a>
+            </div>
+
+            <a href="#contact" class="bg-white text-black px-5 py-2 md:px-6 md:py-2.5 rounded-full font-bold text-xs md:text-sm hover:scale-105 transition shadow-[0_0_15px_rgba(255,255,255,0.3)] border border-white">
+                Book Call
+            </a>
+        </nav>
+    </div>
+
+    <!-- Hero Section -->
+    <section id="home" class="min-h-screen flex flex-col justify-center items-center text-center px-6 pt-20 relative">
+        <div class="reveal-up">
+            <span class="border border-blue-500/30 bg-blue-500/10 px-4 py-1.5 rounded-full text-[10px] md:text-xs font-bold tracking-[0.2em] uppercase mb-8 text-blue-300 inline-block backdrop-blur-md shadow-[0_0_20px_rgba(59,130,246,0.2)]">
+                <i class="fa-solid fa-circle text-[6px] align-middle mr-2 animate-pulse"></i> Open for Projects
+            </span>
+        </div>
+
+        <h1 class="reveal-up text-5xl md:text-7xl lg:text-8xl font-display font-bold mb-6 leading-[1.1] tracking-tight">
+            Forging Digital <br>
+            <span class="text-holographic typing-cursor" id="typing-text"></span>
+        </h1>
+
+        <p class="reveal-up text-lg md:text-xl text-gray-400 max-w-2xl mb-10 leading-relaxed font-light">
+            We architect high-performance web ecosystems and intelligent automation for brands that demand the extraordinary.
+        </p>
+
+        <div class="reveal-up flex flex-col sm:flex-row gap-4 sm:gap-6 w-full sm:w-auto">
+            <a href="#projects" class="group relative px-8 py-4 rounded-xl font-bold text-white border border-white/10 bg-white/5 overflow-hidden transition-all hover:border-white/30">
+                <div class="absolute inset-0 bg-gradient-to-r from-blue-600 to-purple-600 opacity-0 group-hover:opacity-20 transition duration-500"></div>
+                <span>View Selected Work</span>
+            </a>
+            <a href="#contact" class="px-8 py-4 rounded-xl font-bold text-white hover:bg-white/5 transition flex justify-center items-center gap-2 border border-transparent hover:border-white/10">
+                Start a Project <i class="fa-solid fa-arrow-right -rotate-45 group-hover:rotate-0 transition text-sm"></i>
+            </a>
+        </div>
+        
+        <div class="absolute bottom-10 animate-bounce text-gray-500 text-xs tracking-widest uppercase">
+            Scroll to Explore
+        </div>
+    </section>
+
+    <!-- Tech Stack Marquee -->
+    <section class="py-8 border-y border-white/5 bg-black/20 backdrop-blur-sm overflow-hidden relative">
+        <div class="absolute inset-y-0 left-0 w-32 bg-gradient-to-r from-[#030303] to-transparent z-10"></div>
+        <div class="absolute inset-y-0 right-0 w-32 bg-gradient-to-l from-[#030303] to-transparent z-10"></div>
+        
+        <div class="flex whitespace-nowrap animate-scroll hover:pause">
+            <div class="flex items-center gap-12 md:gap-20 mx-10 text-gray-500 font-display font-semibold text-lg uppercase tracking-wider">
+                <span class="hover:text-white transition"><i class="fa-brands fa-react mr-2"></i> React</span>
+                <span class="hover:text-white transition"><i class="fa-brands fa-node mr-2"></i> Node.js</span>
+                <span class="hover:text-white transition"><i class="fa-brands fa-python mr-2"></i> Python</span>
+                <span class="hover:text-white transition"><i class="fa-brands fa-aws mr-2"></i> AWS</span>
+                <span class="hover:text-white transition"><i class="fa-solid fa-cube mr-2"></i> Web3</span>
+                <span class="hover:text-white transition"><i class="fa-brands fa-docker mr-2"></i> Docker</span>
+                <span class="hover:text-white transition"><i class="fa-solid fa-database mr-2"></i> MongoDB</span>
+                <span class="hover:text-white transition"><i class="fa-brands fa-js mr-2"></i> TypeScript</span>
+            </div>
+            <div class="flex items-center gap-12 md:gap-20 mx-10 text-gray-500 font-display font-semibold text-lg uppercase tracking-wider">
+                <span class="hover:text-white transition"><i class="fa-brands fa-react mr-2"></i> React</span>
+                <span class="hover:text-white transition"><i class="fa-brands fa-node mr-2"></i> Node.js</span>
+                <span class="hover:text-white transition"><i class="fa-brands fa-python mr-2"></i> Python</span>
+                <span class="hover:text-white transition"><i class="fa-brands fa-aws mr-2"></i> AWS</span>
+                <span class="hover:text-white transition"><i class="fa-solid fa-cube mr-2"></i> Web3</span>
+                <span class="hover:text-white transition"><i class="fa-brands fa-docker mr-2"></i> Docker</span>
+                <span class="hover:text-white transition"><i class="fa-solid fa-database mr-2"></i> MongoDB</span>
+                <span class="hover:text-white transition"><i class="fa-brands fa-js mr-2"></i> TypeScript</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- RECENT PROJECTS SECTION -->
+    <section id="projects" class="py-24 px-6 max-w-7xl mx-auto">
+        <div class="reveal-up flex flex-col md:flex-row justify-between items-end mb-16">
+            <div>
+                <span class="text-blue-500 font-mono text-xs tracking-widest uppercase mb-2 block">01 // Portfolio</span>
+                <h2 class="text-4xl md:text-5xl font-display font-bold mb-2">Featured Work</h2>
+                <p class="text-gray-500 max-w-md">Engineering milestones shipped for global clients.</p>
+            </div>
+            <a href="#" class="hidden md:inline-flex items-center gap-2 text-sm font-bold text-white border-b border-white/20 pb-1 hover:border-blue-500 hover:text-blue-400 transition mt-4 md:mt-0">
+                View Github <i class="fa-solid fa-arrow-right -rotate-45"></i>
+            </a>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Project 1 -->
+            <div class="reveal-up glass-card rounded-3xl overflow-hidden group cursor-pointer h-full flex flex-col delay-100 relative">
+                <div class="h-56 overflow-hidden relative">
+                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Fintech Dashboard" class="w-full h-full object-cover transition duration-700 group-hover:scale-105 group-hover:opacity-80">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-60"></div>
+                    <div class="absolute top-4 right-4 bg-black/60 backdrop-blur-md px-3 py-1 rounded-full text-[10px] font-bold border border-white/10 uppercase tracking-wider text-blue-300">Fintech</div>
+                    
+                    <div class="absolute inset-0 flex items-end justify-center pb-6 translate-y-[100%] group-hover:translate-y-0 transition-transform duration-500 ease-in-out z-20">
+                        <button class="bg-white/90 backdrop-blur text-black px-6 py-2.5 rounded-full font-bold text-xs uppercase tracking-widest hover:scale-105 hover:bg-white transition shadow-lg">
+                            View Case Study
+                        </button>
+                    </div>
+                </div>
+                <div class="p-8 flex-1 flex flex-col relative z-10 bg-transparent">
+                    <h3 class="text-2xl font-display font-bold mb-2 group-hover:text-blue-400 transition">Nova Banking</h3>
+                    <p class="text-gray-400 text-sm mb-6 flex-1 leading-relaxed">High-frequency trading dashboard with real-time WebSocket data visualization.</p>
+                    <div class="flex items-center gap-2 text-[10px] font-mono text-gray-500 uppercase">
+                        <span class="border border-white/10 px-2 py-1 rounded">React</span>
+                        <span class="border border-white/10 px-2 py-1 rounded">Python</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 2 -->
+            <div class="reveal-up glass-card rounded-3xl overflow-hidden group cursor-pointer h-full flex flex-col delay-200 relative">
+                <div class="h-56 overflow-hidden relative">
+                    <img src="https://images.unsplash.com/photo-1639322537228-f710d846310a?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Crypto Platform" class="w-full h-full object-cover transition duration-700 group-hover:scale-105 group-hover:opacity-80">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-60"></div>
+                    <div class="absolute top-4 right-4 bg-black/60 backdrop-blur-md px-3 py-1 rounded-full text-[10px] font-bold border border-white/10 uppercase tracking-wider text-purple-300">Web3</div>
+                    
+                    <div class="absolute inset-0 flex items-end justify-center pb-6 translate-y-[100%] group-hover:translate-y-0 transition-transform duration-500 ease-in-out z-20">
+                        <button class="bg-white/90 backdrop-blur text-black px-6 py-2.5 rounded-full font-bold text-xs uppercase tracking-widest hover:scale-105 hover:bg-white transition shadow-lg">
+                            View Case Study
+                        </button>
+                    </div>
+                </div>
+                <div class="p-8 flex-1 flex flex-col relative z-10">
+                    <h3 class="text-2xl font-display font-bold mb-2 group-hover:text-purple-400 transition">Aether Chain</h3>
+                    <p class="text-gray-400 text-sm mb-6 flex-1 leading-relaxed">Decentralized exchange designed for maximum security and sub-second speeds.</p>
+                    <div class="flex items-center gap-2 text-[10px] font-mono text-gray-500 uppercase">
+                        <span class="border border-white/10 px-2 py-1 rounded">Next.js</span>
+                        <span class="border border-white/10 px-2 py-1 rounded">Solidity</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 3 -->
+            <div class="reveal-up glass-card rounded-3xl overflow-hidden group cursor-pointer h-full flex flex-col delay-300 relative">
+                <div class="h-56 overflow-hidden relative">
+                    <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="AI Platform" class="w-full h-full object-cover transition duration-700 group-hover:scale-105 group-hover:opacity-80">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-60"></div>
+                    <div class="absolute top-4 right-4 bg-black/60 backdrop-blur-md px-3 py-1 rounded-full text-[10px] font-bold border border-white/10 uppercase tracking-wider text-cyan-300">AI / ML</div>
+                    
+                    <div class="absolute inset-0 flex items-end justify-center pb-6 translate-y-[100%] group-hover:translate-y-0 transition-transform duration-500 ease-in-out z-20">
+                        <button class="bg-white/90 backdrop-blur text-black px-6 py-2.5 rounded-full font-bold text-xs uppercase tracking-widest hover:scale-105 hover:bg-white transition shadow-lg">
+                            View Case Study
+                        </button>
+                    </div>
+                </div>
+                <div class="p-8 flex-1 flex flex-col relative z-10">
+                    <h3 class="text-2xl font-display font-bold mb-2 group-hover:text-cyan-400 transition">Hyper Vision</h3>
+                    <p class="text-gray-400 text-sm mb-6 flex-1 leading-relaxed">Computer vision platform for automated manufacturing quality control.</p>
+                    <div class="flex items-center gap-2 text-[10px] font-mono text-gray-500 uppercase">
+                        <span class="border border-white/10 px-2 py-1 rounded">PyTorch</span>
+                        <span class="border border-white/10 px-2 py-1 rounded">FastAPI</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Capabilities -->
+    <section id="expertise" class="py-12 px-6 max-w-7xl mx-auto">
+        <div class="reveal-up mb-12">
+            <span class="text-purple-500 font-mono text-xs tracking-widest uppercase mb-2 block">02 // Services</span>
+            <h2 class="text-4xl md:text-5xl font-display font-bold mb-2">Our Capabilities</h2>
+            <p class="text-gray-500">Engineering excellence for the modern web.</p>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <!-- Full Stack -->
+            <div class="reveal-up glass-card p-8 rounded-3xl relative overflow-hidden cursor-pointer capability-card transition-all duration-300 group">
+                <div class="bg-icon absolute -right-6 -top-6 text-blue-500 text-[10rem] opacity-0 transition-all duration-700 ease-out rotate-12 group-hover:opacity-5 group-hover:scale-105 pointer-events-none">
+                    <i class="fa-solid fa-layer-group"></i>
+                </div>
+                
+                <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-blue-500/20 to-transparent flex items-center justify-center text-blue-400 mb-8 border border-blue-500/10 relative z-10 group-hover:scale-110 transition-transform duration-300">
+                    <i class="fa-solid fa-layer-group text-2xl"></i>
+                </div>
+                <h3 class="text-2xl font-display font-bold mb-4 relative z-10 group-hover:text-blue-400 transition-colors">Full-Stack Arch.</h3>
+                <p class="text-gray-400 text-sm leading-relaxed relative z-10">Scalable backends with Node/Python and lightning-fast frontends using Next.js. Serverless ready.</p>
+            </div>
+            
+            <!-- AI & Automation -->
+            <div class="reveal-up glass-card p-8 rounded-3xl relative overflow-hidden cursor-pointer capability-card transition-all duration-300 group delay-100">
+                <div class="bg-icon absolute -right-6 -top-6 text-purple-500 text-[10rem] opacity-0 transition-all duration-700 ease-out rotate-12 group-hover:opacity-5 group-hover:scale-105 pointer-events-none">
+                    <i class="fa-solid fa-brain"></i>
+                </div>
+
+                <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-purple-500/20 to-transparent flex items-center justify-center text-purple-400 mb-8 border border-purple-500/10 relative z-10 group-hover:scale-110 transition-transform duration-300">
+                    <i class="fa-solid fa-brain text-2xl"></i>
+                </div>
+                <h3 class="text-2xl font-display font-bold mb-4 relative z-10 group-hover:text-purple-400 transition-colors">AI & Automation</h3>
+                <p class="text-gray-400 text-sm leading-relaxed relative z-10">LLM integration and custom agents to automate complex business workflows and data analysis.</p>
+            </div>
+            
+            <!-- Cyber Security -->
+            <div class="reveal-up glass-card p-8 rounded-3xl relative overflow-hidden cursor-pointer capability-card transition-all duration-300 group delay-200">
+                <div class="bg-icon absolute -right-6 -top-6 text-cyan-500 text-[10rem] opacity-0 transition-all duration-700 ease-out rotate-12 group-hover:opacity-5 group-hover:scale-105 pointer-events-none">
+                    <i class="fa-solid fa-shield-halved"></i>
+                </div>
+
+                <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-cyan-500/20 to-transparent flex items-center justify-center text-cyan-400 mb-8 border border-cyan-500/10 relative z-10 group-hover:scale-110 transition-transform duration-300">
+                    <i class="fa-solid fa-shield-halved text-2xl"></i>
+                </div>
+                <h3 class="text-2xl font-display font-bold mb-4 relative z-10 group-hover:text-cyan-400 transition-colors">Cyber Security</h3>
+                <p class="text-gray-400 text-sm leading-relaxed relative z-10">Enterprise-grade penetration testing, DDoS protection, and secure data encryption protocols.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- STATS SECTION -->
+    <section id="stats-section" class="py-20 border-y border-white/5 bg-black/40 backdrop-blur-sm relative">
+        <div class="absolute inset-0 bg-gradient-to-r from-transparent via-blue-900/10 to-transparent opacity-30"></div>
+        <div class="max-w-7xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-12 text-center relative z-10">
+            <div class="reveal-up group">
+                <div class="text-4xl md:text-6xl font-display font-bold text-white mb-2 flex justify-center items-center">
+                    <span class="counter" data-target="120">0</span>+
+                </div>
+                <div class="text-gray-500 font-mono text-[10px] md:text-xs uppercase tracking-widest group-hover:text-blue-400 transition">Projects Shipped</div>
+            </div>
+            <div class="reveal-up group delay-100">
+                <div class="text-4xl md:text-6xl font-display font-bold text-white mb-2 flex justify-center items-center">
+                    <span class="counter" data-target="99">0</span>%
+                </div>
+                <div class="text-gray-500 font-mono text-[10px] md:text-xs uppercase tracking-widest group-hover:text-purple-400 transition">Uptime SLA</div>
+            </div>
+            <div class="reveal-up group delay-200">
+                <div class="text-4xl md:text-6xl font-display font-bold text-white mb-2 flex justify-center items-center">
+                    $<span class="counter" data-target="50">0</span>M
+                </div>
+                <div class="text-gray-500 font-mono text-[10px] md:text-xs uppercase tracking-widest group-hover:text-cyan-400 transition">Client Revenue</div>
+            </div>
+            <div class="reveal-up group delay-300">
+                <div class="text-4xl md:text-6xl font-display font-bold text-white mb-2 flex justify-center items-center">
+                    24/7
+                </div>
+                <div class="text-gray-500 font-mono text-[10px] md:text-xs uppercase tracking-widest group-hover:text-green-400 transition">Critical Support</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ABOUT N M SiAM (UPDATED LAYOUT: Desktop Right, Mobile Bottom) -->
+    <section id="about" class="py-24 px-6 max-w-7xl mx-auto relative overflow-hidden">
+        <!-- Abstract Bg -->
+        <div class="absolute top-1/4 left-0 w-96 h-96 bg-purple-600/10 rounded-full blur-[100px] -z-10"></div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            
+            <!-- Company Identity & Philosophy Wrapper -->
+            <!-- Flex Column on Mobile, Flex Row on Desktop -->
+            <div class="reveal-up flex flex-col lg:flex-row items-center gap-8 lg:gap-12 w-full max-w-4xl mx-auto lg:ml-0">
+                
+                <!-- 1. Logo Section -->
+                <div class="relative group w-full max-w-sm shrink-0">
+                    <!-- Background Blur -->
+                    <div class="absolute inset-0 bg-gradient-to-r from-blue-500 to-purple-600 rounded-3xl blur-xl opacity-20 group-hover:opacity-40 transition duration-700"></div>
+                    <!-- Glass Card -->
+                    <div class="glass-card p-2 rounded-3xl relative">
+                        <div class="rounded-2xl overflow-hidden aspect-square relative bg-gradient-to-br from-[#050505] to-[#1a1a2e] flex items-center justify-center">
+                            
+                            <!-- Logo Image -->
+                            <img src="https://nmsiam-bd.github.io/assets/logo.webp" alt="N M SiAM Logo" class="w-full h-full object-cover opacity-90 group-hover:opacity-100 group-hover:scale-105 transition duration-700">
+                            
+                            <!-- Overlay Text -->
+                            <div class="absolute bottom-0 left-0 w-full bg-gradient-to-t from-black via-black/90 to-transparent p-6">
+                                <p class="text-blue-400 font-mono text-xs uppercase tracking-widest">Next-Gen Digital Solutions</p>
+                            </div>
+
+                            <!-- Noise Texture -->
+                            <div class="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 pointer-events-none"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 2. Philosophy Quote (Right on Desktop, Bottom on Mobile) -->
+                <div class="glass-panel p-6 rounded-2xl border border-white/10 shadow-2xl w-full max-w-sm lg:max-w-xs relative z-10">
+                    <p class="text-gray-300 italic text-sm">"Code is poetry written for machines to empower humans."</p>
+                    <p class="text-blue-500 text-[10px] uppercase mt-2 tracking-widest">- Our Philosophy</p>
+                </div>
+
+            </div>
+
+            <!-- Content -->
+            <div class="reveal-up space-y-10">
+                <div>
+                    <span class="text-blue-500 font-mono text-xs tracking-widest uppercase mb-2 block">03 // About Us</span>
+                    <h2 class="text-4xl md:text-5xl font-display font-bold mb-6">About N M SiAM</h2>
+                    <p class="text-gray-400 leading-relaxed text-lg mb-4">
+                        N M SiAM was established with a singular purpose: to bridge the chasm between complex digital engineering and intuitive human experiences. We are a collective of architects building the future of digital interaction.
+                    </p>
+                </div>
+
+                <!-- Vision & Mission Grid -->
+                <div class="grid grid-cols-1 gap-6">
+                    <!-- Founding Goal & Vision -->
+                    <div class="glass-card p-6 rounded-2xl border border-white/5 hover:border-blue-500/30 transition">
+                        <div class="flex items-start gap-4">
+                            <div class="w-10 h-10 rounded-full bg-blue-500/10 flex items-center justify-center text-blue-400 shrink-0 mt-1">
+                                <i class="fa-solid fa-eye"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-xl font-display font-bold mb-2">Our Vision</h4>
+                                <p class="text-gray-500 text-sm leading-relaxed">
+                                    To be the global catalyst for digital transformation. We aim to create a world where businesses operate seamlessly through intelligent automation, allowing humans to focus on creativity and innovation.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Mission -->
+                    <div class="glass-card p-6 rounded-2xl border border-white/5 hover:border-purple-500/30 transition">
+                        <div class="flex items-start gap-4">
+                            <div class="w-10 h-10 rounded-full bg-purple-500/10 flex items-center justify-center text-purple-400 shrink-0 mt-1">
+                                <i class="fa-solid fa-rocket"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-xl font-display font-bold mb-2">Our Mission</h4>
+                                <p class="text-gray-500 text-sm leading-relaxed">
+                                    To deliver robust, scalable, and secure digital solutions that solve real-world problems with elegance. We are committed to engineering excellence, continuous learning, and client success.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Future Plans -->
+                    <div class="glass-card p-6 rounded-2xl border border-white/5 hover:border-cyan-500/30 transition">
+                        <div class="flex items-start gap-4">
+                            <div class="w-10 h-10 rounded-full bg-cyan-500/10 flex items-center justify-center text-cyan-400 shrink-0 mt-1">
+                                <i class="fa-solid fa-bolt"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-xl font-display font-bold mb-2">Future Plans</h4>
+                                <p class="text-gray-500 text-sm leading-relaxed">
+                                    We are expanding our R&D division to focus on Autonomous AI Agents and Quantum-ready encryption. By 2027, we aim to launch a proprietary SaaS ecosystem that democratizes enterprise-grade automation for startups.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- THE METHODOLOGY (NO CONNECTIONS) -->
+    <section id="methodology" class="py-24 px-6 max-w-7xl mx-auto">
+        <div class="reveal-up text-center mb-16">
+            <span class="text-cyan-500 font-mono text-xs tracking-widest uppercase mb-2 block">04 // Process</span>
+            <h2 class="text-4xl md:text-5xl font-display font-bold mb-4">The Methodology</h2>
+            <p class="text-gray-400">From concept to scalable reality.</p>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 relative">
+            
+            <!-- Phase 1 (Strategy) -->
+            <div class="reveal-up glass-card p-10 rounded-3xl border border-white/5 bg-[#0a0a0a] relative hover:bg-white/5 transition duration-500 z-10">
+                <div class="text-4xl font-display font-bold text-white/10 mb-6 absolute top-6 right-8">01</div>
+                <h3 class="text-2xl font-display font-bold mb-6 text-white">Strategy</h3>
+                <ul class="space-y-4 text-gray-400 text-sm">
+                    <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 rounded-full bg-blue-500"></span> Market Analysis</li>
+                    <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 rounded-full bg-blue-500"></span> Tech Feasibility</li>
+                    <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 rounded-full bg-blue-500"></span> Roadmap Design</li>
+                </ul>
+            </div>
+
+            <!-- Phase 2 (Engineering) -->
+            <div class="reveal-up glass-card p-10 rounded-3xl border border-blue-500/30 bg-blue-900/5 relative overflow-hidden shadow-[0_0_40px_rgba(59,130,246,0.05)] delay-100 z-10">
+                <div class="absolute inset-0 bg-blue-500/5 animate-pulse-slow"></div>
+                
+                <!-- CORNER BADGE -->
+                <div class="absolute top-0 right-0 bg-blue-600 text-white text-[10px] font-bold px-4 py-1.5 rounded-bl-2xl shadow-lg z-20 tracking-widest border-l border-b border-white/20">
+                    CORE
+                </div>
+
+                <div class="text-4xl font-display font-bold text-blue-500/20 mb-6 absolute top-6 right-8 mt-4">02</div>
+                
+                <h3 class="text-2xl font-display font-bold mb-6 text-white relative z-10">Engineering</h3>
+                <ul class="space-y-4 text-gray-300 font-medium text-sm relative z-10">
+                    <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 rounded-full bg-purple-400"></span> Agile Development</li>
+                    <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 rounded-full bg-purple-400"></span> Clean Code Standards</li>
+                    <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 rounded-full bg-purple-400"></span> Rigorous Testing</li>
+                </ul>
+            </div>
+
+            <!-- Phase 3 (Scale) -->
+            <div class="reveal-up glass-card p-10 rounded-3xl border border-white/5 bg-[#0a0a0a] hover:bg-white/5 transition duration-500 delay-200 z-10">
+                <div class="text-4xl font-display font-bold text-white/10 mb-6 absolute top-6 right-8">03</div>
+                <h3 class="text-2xl font-display font-bold mb-6 text-white">Scale</h3>
+                <ul class="space-y-4 text-gray-400 text-sm">
+                    <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 rounded-full bg-cyan-500"></span> Cloud Deployment</li>
+                    <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 rounded-full bg-cyan-500"></span> Performance Tuning</li>
+                    <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 rounded-full bg-cyan-500"></span> 24/7 Monitoring</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- NEW BLOG SECTION -->
+    <section id="blog" class="py-24 px-6 max-w-7xl mx-auto border-t border-white/5">
+        <div class="reveal-up flex flex-col md:flex-row justify-between items-end mb-12">
+            <div>
+                <span class="text-green-500 font-mono text-xs tracking-widest uppercase mb-2 block">05 // Insights</span>
+                <h2 class="text-4xl md:text-5xl font-display font-bold mb-2">Latest Thoughts</h2>
+                <p class="text-gray-500 max-w-md">Deep dives into code, culture, and future tech.</p>
+            </div>
+            <a href="#" class="hidden md:inline-flex items-center gap-2 text-sm font-bold text-white border-b border-white/20 pb-1 hover:border-green-500 hover:text-green-400 transition mt-4 md:mt-0">
+                Read All Articles <i class="fa-solid fa-arrow-right -rotate-45"></i>
+            </a>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <!-- Blog 1 -->
+            <div class="reveal-up glass-card p-6 rounded-2xl group hover:border-green-500/30 cursor-pointer">
+                <div class="text-xs text-green-400 font-mono mb-3">MARCH 05, 2026</div>
+                <h3 class="text-xl font-display font-bold mb-3 group-hover:text-green-300 transition">The Future of AI Agents in DevOps</h3>
+                <p class="text-gray-500 text-sm leading-relaxed mb-4">
+                    How autonomous agents are reshaping the CI/CD pipeline and reducing deployment times by 90%.
+                </p>
+                <div class="flex items-center text-sm font-medium text-white group-hover:underline decoration-green-500 underline-offset-4">
+                    Read Article <i class="fa-solid fa-arrow-right ml-2 text-xs"></i>
+                </div>
+            </div>
+
+            <!-- Blog 2 -->
+            <div class="reveal-up glass-card p-6 rounded-2xl group hover:border-blue-500/30 cursor-pointer delay-100">
+                <div class="text-xs text-blue-400 font-mono mb-3">FEB 28, 2026</div>
+                <h3 class="text-xl font-display font-bold mb-3 group-hover:text-blue-300 transition">Scaling Node.js to 1M Connections</h3>
+                <p class="text-gray-500 text-sm leading-relaxed mb-4">
+                    Practical strategies for handling massive concurrency using clustering and worker threads.
+                </p>
+                <div class="flex items-center text-sm font-medium text-white group-hover:underline decoration-blue-500 underline-offset-4">
+                    Read Article <i class="fa-solid fa-arrow-right ml-2 text-xs"></i>
+                </div>
+            </div>
+
+            <!-- Blog 3 -->
+            <div class="reveal-up glass-card p-6 rounded-2xl group hover:border-purple-500/30 cursor-pointer delay-200">
+                <div class="text-xs text-purple-400 font-mono mb-3">FEB 15, 2026</div>
+                <h3 class="text-xl font-display font-bold mb-3 group-hover:text-purple-300 transition">Web3 Security Best Practices</h3>
+                <p class="text-gray-500 text-sm leading-relaxed mb-4">
+                    Auditing smart contracts and preventing reentrancy attacks in modern DeFi applications.
+                </p>
+                <div class="flex items-center text-sm font-medium text-white group-hover:underline decoration-purple-500 underline-offset-4">
+                    Read Article <i class="fa-solid fa-arrow-right ml-2 text-xs"></i>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- LOVED BY INNOVATORS -->
+    <section class="py-24 px-6 max-w-7xl mx-auto">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+            <div class="reveal-up">
+                <span class="text-purple-500 font-mono text-xs tracking-widest uppercase mb-2 block">06 // Reviews</span>
+                <h2 class="text-4xl md:text-5xl font-display font-bold mb-6">Loved by Innovators</h2>
+                <p class="text-gray-400 mb-8">See what industry leaders are saying about our engineering capabilities.</p>
+                
+                <div class="glass-card p-8 rounded-3xl border-l-4 border-blue-500 relative">
+                    <div class="text-4xl text-blue-500/20 absolute top-4 right-6"><i class="fa-solid fa-quote-right"></i></div>
+                    <p class="text-lg text-gray-200 mb-6 italic leading-relaxed font-light">"N M SiAM transformed our legacy infrastructure into a scalable, cloud-native ecosystem. What used to take days to process now happens in seconds. The attention to security was exceptional."</p>
+                    <div class="flex items-center gap-4">
+                        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="User" class="w-12 h-12 rounded-full border border-blue-500">
+                        <div>
+                            <h4 class="font-bold text-white font-display">David Chen</h4>
+                            <p class="text-[10px] text-blue-400 uppercase tracking-wider">CTO, Nexus Dynamics</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="reveal-up relative h-full min-h-[300px] glass-panel rounded-3xl overflow-hidden flex flex-col items-center justify-center p-8 text-center border border-white/5">
+                <div class="absolute inset-0 bg-gradient-to-br from-blue-900/20 to-purple-900/20"></div>
+                <div class="relative z-10">
+                    <div class="text-7xl md:text-8xl font-display font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400 mb-2">100%</div>
+                    <p class="text-gray-400 mb-8 uppercase tracking-widest text-xs font-mono">Project Success Rate</p>
+                    <div class="flex gap-2 justify-center text-yellow-400 text-2xl mb-4">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                    </div>
+                    <p class="text-sm text-gray-500">Based on 50+ Enterprise Clients</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="py-24 px-6 max-w-4xl mx-auto">
+        <div class="reveal-up text-center mb-12">
+            <h2 class="text-3xl font-display font-bold mb-4">Common Questions</h2>
+        </div>
+        <div class="space-y-4">
+            <div class="reveal-up glass-card rounded-2xl p-6 cursor-pointer group hover:bg-white/5 transition" onclick="this.classList.toggle('open')">
+                <div class="flex justify-between items-center">
+                    <h3 class="font-medium text-lg">Do you work with startups?</h3>
+                    <i class="fa-solid fa-plus text-gray-500 group-[.open]:rotate-45 transition duration-300"></i>
+                </div>
+                <p class="text-gray-400 mt-4 hidden group-[.open]:block text-sm leading-relaxed border-t border-white/10 pt-4">Yes, we specialize in helping Seed to Series A startups build scalable MVP infrastructure that can handle rapid growth.</p>
+            </div>
+            <div class="reveal-up glass-card rounded-2xl p-6 cursor-pointer group hover:bg-white/5 transition" onclick="this.classList.toggle('open')">
+                <div class="flex justify-between items-center">
+                    <h3 class="font-medium text-lg">What is your typical timeline?</h3>
+                    <i class="fa-solid fa-plus text-gray-500 group-[.open]:rotate-45 transition duration-300"></i>
+                </div>
+                <p class="text-gray-400 mt-4 hidden group-[.open]:block text-sm leading-relaxed border-t border-white/10 pt-4">Timelines vary by complexity. A standard full-stack MVP typically takes 4-8 weeks, while enterprise integrations may take 3-6 months.</p>
+            </div>
+            <div class="reveal-up glass-card rounded-2xl p-6 cursor-pointer group hover:bg-white/5 transition" onclick="this.classList.toggle('open')">
+                <div class="flex justify-between items-center">
+                    <h3 class="font-medium text-lg">Do you offer post-launch support?</h3>
+                    <i class="fa-solid fa-plus text-gray-500 group-[.open]:rotate-45 transition duration-300"></i>
+                </div>
+                <p class="text-gray-400 mt-4 hidden group-[.open]:block text-sm leading-relaxed border-t border-white/10 pt-4">Absolutely. We provide retainer packages for ongoing maintenance, security updates, and feature scaling.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT DETAILS (HUD STYLE) -->
+    <section id="contact" class="py-12 md:py-24 px-4 md:px-6 relative overflow-hidden">
+        <div class="reveal-up max-w-5xl mx-auto glass-panel p-8 md:p-16 rounded-[2rem] md:rounded-[3rem] border border-white/10 relative overflow-hidden">
+            <!-- Background Glow -->
+            <div class="absolute top-0 right-0 w-96 h-96 bg-blue-600/10 rounded-full blur-[80px] -z-10"></div>
+
+            <div class="text-center mb-8 md:mb-12">
+                <span class="text-blue-400 text-xs font-mono tracking-[0.2em] md:tracking-[0.3em] animate-pulse">>> ESTABLISH_UPLINK</span>
+                <h2 class="text-3xl md:text-5xl font-display font-bold mt-3">Ready to Scale?</h2>
+                <p class="text-gray-400 mt-4 max-w-xl mx-auto text-sm md:text-base font-light">Skip the forms. Connect directly via secure channels.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 mb-8 md:mb-10">
+                <!-- Email Card -->
+                <a href="mailto:hello@nmsiam.com" class="glass-card contact-box p-6 md:p-8 rounded-2xl flex flex-col sm:flex-row items-center text-center sm:text-left gap-4 md:gap-6 group hover:border-blue-500/50 transition">
+                    <div class="w-12 h-12 md:w-16 md:h-16 rounded-full bg-blue-500/10 flex items-center justify-center text-blue-400 text-xl md:text-2xl group-hover:bg-blue-500 group-hover:text-white transition duration-300 shrink-0">
+                        <i class="fa-regular fa-envelope"></i>
+                    </div>
+                    <div class="min-w-0">
+                        <div class="text-[10px] text-gray-500 uppercase tracking-widest mb-1">Direct Mail</div>
+                        <div class="text-lg md:text-2xl font-bold text-white group-hover:text-blue-300 transition break-all sm:break-normal font-display">hello@nmsiam.com</div>
+                    </div>
+                </a>
+
+                <!-- Phone Card -->
+                <a href="tel:+8801700000000" class="glass-card contact-box p-6 md:p-8 rounded-2xl flex flex-col sm:flex-row items-center text-center sm:text-left gap-4 md:gap-6 group hover:border-purple-500/50 transition">
+                    <div class="w-12 h-12 md:w-16 md:h-16 rounded-full bg-purple-500/10 flex items-center justify-center text-purple-400 text-xl md:text-2xl group-hover:bg-purple-500 group-hover:text-white transition duration-300 shrink-0">
+                        <i class="fa-solid fa-phone"></i>
+                    </div>
+                    <div class="min-w-0">
+                        <div class="text-[10px] text-gray-500 uppercase tracking-widest mb-1">Secure Line</div>
+                        <div class="text-lg md:text-2xl font-bold text-white group-hover:text-purple-300 transition font-display">+880 1700 000 000</div>
+                    </div>
+                </a>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
+                <div class="glass-card p-6 rounded-2xl text-center md:col-span-1">
+                    <div class="text-gray-500 text-[10px] uppercase mb-2 tracking-widest">Base of Operations</div>
+                    <div class="text-white font-semibold"><i class="fa-solid fa-location-dot text-red-400 mr-2"></i> Dhaka, Bangladesh</div>
+                </div>
+
+                <div class="glass-card p-6 rounded-2xl md:col-span-2 grid grid-cols-2 sm:flex sm:justify-around items-center gap-6 sm:gap-0">
+                    <a href="#" class="flex flex-col items-center gap-2 group opacity-60 hover:opacity-100 transition">
+                        <i class="fa-brands fa-linkedin-in text-xl group-hover:text-blue-500 transition"></i>
+                        <span class="text-[10px] uppercase tracking-widest text-gray-400">LinkedIn</span>
+                    </a>
+                    <a href="#" class="flex flex-col items-center gap-2 group opacity-60 hover:opacity-100 transition">
+                        <i class="fa-brands fa-github text-xl group-hover:text-white transition"></i>
+                        <span class="text-[10px] uppercase tracking-widest text-gray-400">GitHub</span>
+                    </a>
+                    <a href="#" class="flex flex-col items-center gap-2 group opacity-60 hover:opacity-100 transition">
+                        <i class="fa-brands fa-facebook-f text-xl group-hover:text-blue-600 transition"></i>
+                        <span class="text-[10px] uppercase tracking-widest text-gray-400">Facebook</span>
+                    </a>
+                    <a href="#" class="flex flex-col items-center gap-2 group opacity-60 hover:opacity-100 transition">
+                        <i class="fa-brands fa-whatsapp text-xl group-hover:text-green-500 transition"></i>
+                        <span class="text-[10px] uppercase tracking-widest text-gray-400">WhatsApp</span>
+                    </a>
+                </div>
+            </div>
+
+            <div class="mt-8 md:mt-10 text-center">
+                <a href="mailto:hello@nmsiam.com" class="inline-block w-full sm:w-auto py-4 px-8 md:px-12 bg-white text-black font-bold rounded-xl hover:bg-gray-200 transition shadow-[0_0_30px_rgba(255,255,255,0.2)] text-sm tracking-wide">
+                    SCHEDULE DISCOVERY CALL
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Clean Footer -->
+    <footer class="mt-20 border-t border-white/5 bg-black/90 backdrop-blur-xl">
+        <div class="max-w-7xl mx-auto px-6 py-16">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
+                <!-- Brand -->
+                <div class="space-y-4">
+                    <div class="text-2xl font-display font-bold tracking-tight flex items-center gap-2">
+                        N M SiAM <span class="text-blue-500">.</span>
+                    </div>
+                    <p class="text-gray-500 text-sm leading-relaxed max-w-sm font-light">
+                        Architecting digital dominance through clean code, data intelligence, and pixel-perfect design.
+                    </p>
+                </div>
+
+                <!-- Expertise -->
+                <div>
+                    <h4 class="font-bold text-white mb-6 font-display">Services</h4>
+                    <ul class="space-y-3 text-sm text-gray-500">
+                        <li><a href="#" class="hover:text-blue-400 transition">Full-Stack Development</a></li>
+                        <li><a href="#" class="hover:text-blue-400 transition">AI & LLM Integration</a></li>
+                        <li><a href="#" class="hover:text-blue-400 transition">Cloud Infrastructure</a></li>
+                        <li><a href="#" class="hover:text-blue-400 transition">Cyber Security Audits</a></li>
+                    </ul>
+                </div>
+
+                <!-- Quick Links -->
+                <div>
+                    <h4 class="font-bold text-white mb-6 font-display">Company</h4>
+                    <ul class="space-y-3 text-sm text-gray-500">
+                        <li><a href="#about" class="hover:text-white transition">About</a></li>
+                        <li><a href="#projects" class="hover:text-white transition">Projects</a></li>
+                        <li><a href="#blog" class="hover:text-white transition">Blog</a></li>
+                        <li><a href="#contact" class="hover:text-white transition">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-white/5 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-gray-600">
+                <p>&copy; 2026 N M SiAM Digital Solutions. All Rights Reserved.</p>
+                <div class="flex gap-6">
+                    <span class="flex items-center gap-2"><div class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></div> All Systems Normal</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+  <script src="script.js"></script>
+</body>
+</html>
