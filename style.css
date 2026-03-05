@@ -1,3 +1,4 @@
+
         body {
             background-color: #030303;
             color: #e5e7eb;
@@ -13,16 +14,21 @@
         /* Selection Color */
         ::selection { background: rgba(59, 130, 246, 0.3); color: white; }
 
-        /* Fluid Background */
+        /* Fluid Background - Performance Optimized */
         .gradient-bg {
             position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: -1;
             background: #000; overflow: hidden;
+            pointer-events: none; /* Prevents interference with scrolling/zooming */
         }
         .g-blob {
             position: absolute; width: 800px; height: 800px;
             background: radial-gradient(circle, rgba(60, 20, 150, 0.15) 0%, rgba(0, 0, 0, 0) 70%);
             border-radius: 50%; filter: blur(100px); opacity: 0.6;
             animation: moveBlobs 25s infinite alternate;
+            /* Performance Fixes */
+            will-change: transform;
+            backface-visibility: hidden;
+            transform: translateZ(0);
         }
         .g-blob:nth-child(1) { top: -20%; left: -20%; background: radial-gradient(circle, rgba(59, 130, 246, 0.2) 0%, rgba(0, 0, 0, 0) 70%); }
         .g-blob:nth-child(2) { bottom: -20%; right: -20%; background: radial-gradient(circle, rgba(6, 182, 212, 0.2) 0%, rgba(0, 0, 0, 0) 70%); animation-duration: 30s; }
