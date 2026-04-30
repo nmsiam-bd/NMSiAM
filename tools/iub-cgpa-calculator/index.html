@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IUB CGPA Calculator</title>
+        <!-- jsPDF Library for PDF Export -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jspdf-autotable@3.8.2/dist/jspdf.plugin.autotable.min.js"></script>
+
+    <!-- Primary Meta Tags -->
+<meta name="description" content="Calculate your IUB CGPA accurately with our free IUB CGPA Calculator based on the Independent University, Bangladesh grading system." />
+<meta name="keywords" content="IUB CGPA Calculator, Independent University Bangladesh CGPA, IUB GPA Calculator, IUB Result Calculator, IUB Grading System, IUB CGPA Calculator by N M SiAM, IUB CGPA Calculator Developed by Noor Mohammad Siam" />
+<meta name="robots" content="index, follow" />
+<meta name="author" content="Noor Mohammad Siam" />
+<link rel="canonical" href="https://nmsiam.com.bd/tools/iub-cgpa-calculator" />
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website" />
+<meta property="og:title" content="IUB CGPA Calculator | Independent University, Bangladesh" />
+<meta property="og:description" content="IUB CGPA Calculator for Independent University, Bangladesh students to calculate CGPA accurately and easily." />
+<meta property="og:url" content="https://nmsiam.com.bd/tools/iub-cgpa-calculator" />
+<meta property="og:site_name" content="IUB CGPA Calculator" />
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="IUB CGPA Calculator | Independent University, Bangladesh" />
+<meta name="twitter:description" content="Calculate your CGPA using the official grading system of Independent University, Bangladesh." />
+ <!-- Favicon -->
+    <link rel="icon" href="/assets/iub-cgpa-calculator/favicon.webp" type="image/webp">   
+<link href="/resources/iub-cgpa-calculator/style.css" rel="stylesheet">
+    
+</head>
+
+<body>
+    <div class="main-container">
+        <header>
+            <img alt="IUB Logo" src="https://iub.ac.bd/media-backend/media/main-logo-web-thumnail-16x9-98b455dc-b5c6-42de-8bd5-7fc977e7ead9.png" style="max-width: 50%; height: auto;">
+            <h1>IUB CGPA Calculator</h1>
+            <p>Calculate your CGPA with previous results</p>
+        </header>
+        
+        <div class="disclaimer">
+            <h3><span class="disclaimer-icon">⚠️</span> Disclaimer</h3>
+            <p style="text-align: justify;">This calculator is a great way to track your progress! However, please remember it is an unofficial tool. Always verify your final CGPA with the official IUB grade sheet to ensure accuracy. The developers are not responsible for any discrepancies between calculated results and official transcripts.</p>
+        </div>
+        
+        <div class="content-wrapper">
+            <div class="card">
+                <div class="previous-result-section">
+                    <h3>Previous Academic Record <span class="info-icon" title="Leave blank if you don't have previous results">i</span></h3>
+                    <table class="previous-table" id="previousTable">
+                        <thead>
+                            <tr>
+                                <th>Courses</th>
+                                <th>Previous CGPA</th>
+                                <th>Previous Total Credit</th>
+                            </tr>
+                        </thead>
+                        <tbody id="previousTableBody">
+                            <!-- Previous result row will be here -->
+                        </tbody>
+                    </table>
+                    <div class="previous-info">Note: Fill previous CGPA and total credits from your transcript. Leave blank if you don't have previous results.</div>
+                </div>
+                
+                <div class="current-gpa-section">
+                    <h3>Current Result <span class="info-icon" title="Automatically calculated from current courses">i</span></h3>
+                    <table class="current-gpa-table" id="currentGpaTable">
+                        <thead>
+                            <tr>
+                                <th>Courses</th>
+                                <th>Current CGPA</th>
+                                <th>Current Total Credit</th>
+                            </tr>
+                        </thead>
+                        <tbody id="currentGpaTableBody">
+                            <!-- Current GPA row will be here -->
+                        </tbody>
+                    </table>
+                    <div class="current-info">Note: Current CGPA and Current Total Credit are automatically calculated from the Current Courses section below.</div>
+                </div>
+                
+                <h2>Current Courses</h2>
+                
+                <div class="courses-content">
+                    <table class="courses-table" id="coursesTable">
+                        <thead>
+                            <tr>
+                                <th>Course Name</th>
+                                <th>Credit</th>
+                                <th>Grade</th>
+                                <th class="action-cell">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody id="coursesTableBody">
+                            <!-- Courses will be added here by JavaScript -->
+                        </tbody>
+                    </table>
+                    
+                    <div class="btn-group">
+                        <button class="btn btn-add" id="addCourse">
+                            <span class="icon">+</span> Add Course
+                        </button>
+                        <button class="btn btn-reset" id="resetAll">
+                            <span class="icon">↻</span> Reset All
+                        </button>
+                    </div>
+                    
+                    <div class="checkbox-container">
+                        <input type="checkbox" id="autoCalculate" checked>
+                        <label for="autoCalculate">Auto-calculate as I make changes</label>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="card results-card">
+                <h2>Calculate CGPA</h2>
+                
+                <div class="results-top-section">
+                    <div class="cgpa-display">
+                        <div class="cgpa-label">Overall CGPA</div>
+                        <div class="cgpa-value" id="cgpaValue">0.00</div>
+                        <div class="out-of">Out of 4.00</div>
+                        <div class="percentage" id="percentageValue">0%</div>
+                    </div>
+                    
+                    <button class="btn btn-calculate" id="calculateBtn">
+                        <span class="icon">=</span> Calculate Overall CGPA
+                    </button>
+                    
+                    <div class="export-section">
+                        <button class="btn btn-export" id="exportBtn">
+                            <span class="icon">📥</span> Export Result
+                        </button>
+                        <div class="export-menu" id="exportMenu">
+                            <button class="export-option" id="exportPDF">
+                                <i>📄</i> Download as PDF
+                            </button>
+                            <button class="export-option" id="exportCSV">
+                                <i>📊</i> Download as CSV
+                            </button>
+                            <button class="export-option" id="exportText">
+                                <i>📝</i> Download as Text
+                            </button>
+                            <button class="export-option" id="exportPrint">
+                                <i>🖨️</i> Print Result
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="stats-row">
+                    <div class="stat-item">
+                        <div class="stat-value" id="totalCourses">3</div>
+                        <div class="stat-label">Add Courses</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value" id="totalCredits">0.0</div>
+                        <div class="stat-label">Total Credits</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value" id="totalGradePoints">0.00</div>
+                        <div class="stat-label">Total Grade Points</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <footer>
+            &copy; <span id="copyright-year"> 2026 </span>, <a href="https://www.nmsiam.com.bd" style="text-decoration: none; color: inherit;">N M SiAM</a> | All rights reserved.<br>
+Developed by <a href="https://www.noormohammadsiam.com" style="text-decoration: none; color: inherit;">Noor Mohammad Siam</a>
+        </footer>
+    </div>
+    
+    <!-- Student Information Modal -->
+    <div class="modal" id="studentInfoModal">
+        <div class="modal-content">
+            <button class="modal-close-btn" id="modalCloseBtn">×</button>
+            <div class="modal-header">
+                <h2>Student Information</h2>
+                <p>Please provide your details before downloading</p>
+            </div>
+            <div class="modal-body">
+                <form id="studentInfoForm">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="studentName">Full Name</label>
+                            <input type="text" id="studentName" class="form-control" placeholder="Enter your full name">
+                        </div>
+                        <div class="form-group">
+                            <label for="studentId">Student ID</label>
+                            <input type="text" id="studentId" class="form-control" placeholder="Enter your student ID">
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="semester">Semester</label>
+                            <input type="text" id="semester" class="form-control" placeholder="e.g., 5th Semester, Spring 2024">
+                        </div>
+                        <div class="form-group">
+                            <label for="academicYear">Academic Year</label>
+                            <input type="text" id="academicYear" class="form-control" placeholder="e.g., 2023-2024">
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="department">Department/Major</label>
+                        <input type="text" id="department" class="form-control" placeholder="Enter your department or major">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" class="form-control" placeholder="Enter your email address">
+                    </div>
+                    
+                    <div class="download-options">
+                        <h3>Select Download Format:</h3>
+                        <div class="download-buttons">
+                            <button type="button" class="download-btn pdf" id="modalDownloadPDF">
+                                <span class="icon">📄</span> PDF
+                            </button>
+                            <button type="button" class="download-btn csv" id="modalDownloadCSV">
+                                <span class="icon">📊</span> CSV
+                            </button>
+                            <button type="button" class="download-btn text" id="modalDownloadText">
+                                <span class="icon">📝</span> Text
+                            </button>
+                            <button type="button" class="download-btn print" id="modalDownloadPrint">
+                                <span class="icon">🖨️</span> Print
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="modal-btn modal-btn-cancel" id="cancelBtn">Cancel</button>
+                <button type="button" class="modal-btn modal-btn-download" id="downloadBtn">Download</button>
+            </div>
+        </div>
+    </div>
+  <script src="/resources/iub-cgpa-calculator/script.js"></script>
+  </body>
+</html>
