@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://nmsiam-bd.github.io/assets/iub-cgpa-calculator/favicon.webp" alt="IUB CGPA Calculator" style="width: 30%; height: auto; text-align: center;">
+  <img src="https://nmsiam.com.bd/assets/iub-cgpa-calculator/favicon.webp" alt="IUB CGPA Calculator" style="width: 30%; height: auto; text-align: center;">
 </p>
 
 # IUB CGPA Calculator
