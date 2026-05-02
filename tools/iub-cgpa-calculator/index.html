@@ -133,6 +133,36 @@
                             <span class="icon">↻</span> Reset All
                         </button>
                     </div>
+
+                    <!-- Retake Courses Section (Spoiler Style) -->
+                    <div class="retake-container" style="margin-top: 25px; border-top: 2px solid #f0f0f0; padding-top: 15px;">
+                        <div class="spoiler-header" id="toggleRetake" style="cursor: pointer; display: flex; justify-content: space-between; align-items: center; padding: 10px 0;">
+                            <h2 style="margin-bottom: 0; border-bottom: none; font-size: 1.4rem;">Retake Courses (Optional)</h2>
+                            <span id="spoilerIcon" style="font-size: 1.8rem; transition: 0.3s; font-weight: bold; color: #4b6cb7;">+</span>
+                        </div>
+                        
+                        <div id="retakeContent" style="display: none; padding-top: 15px;">
+                            <table class="courses-table" id="retakeTable">
+                                <thead>
+                                    <tr>
+                                        <th>Course Name</th>
+                                        <th>Credit</th>
+                                        <th>Prev Grade</th>
+                                        <th>New Grade</th>
+                                        <th class="action-cell">Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="retakeTableBody">
+                                    <!-- Retake rows added here -->
+                                </tbody>
+                            </table>
+                            <div class="btn-group" style="margin-top: 15px;">
+                                <button class="btn btn-add" id="addRetakeCourse" style="background-color: #f39c12;">
+                                    <span class="icon">+</span> Add Retake Course
+                                </button>
+                            </div>
+                        </div>
+                    </div>
                     
                     <div class="checkbox-container">
                         <input type="checkbox" id="autoCalculate" checked>
