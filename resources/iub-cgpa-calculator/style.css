@@ -1112,8 +1112,10 @@
            #retakeTable th, #retakeTable td { font-size: 0.8rem; padding: 8px 5px; }
        }
 
-      .spoiler-header:hover {
-            opacity: 0.8;
+
+       .spoiler-header:focus, .spoiler-header:active {
+           outline: none;
+           box-shadow: none;
        }
        #spoilerIcon.rotate {
             transform: rotate(45deg);
