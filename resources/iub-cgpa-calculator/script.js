@@ -602,12 +602,12 @@
                 // Inside getResultData function, after normal courses loop:
                 document.querySelectorAll('#retakeTableBody tr').forEach(row => {
                     const name = row.querySelector('.retake-name').value || "Retake Course";
-                    const grade = row.querySelector('.retake-curr-grade').value || "N/A";
+                    const grade = row.querySelector('.retake-curr-grade').value || "Not Selected";
                     courses.push({
                         name: name + " (R)", // Adding (R) for retakes
-                        credit: row.querySelector('.retake-credit').value || "0",
+                        credit: row.querySelector('.retake-credit').value || "N/A",
                         grade: grade,
-                        gradePoint: gradePointMap[grade]?.toFixed(2) || "0.00"
+                        gradePoint: gradePointMap[grade]?.toFixed(2) || "N/A"
                     });
                 });
             
