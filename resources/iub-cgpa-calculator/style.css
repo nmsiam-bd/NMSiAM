@@ -1112,7 +1112,11 @@
            #retakeTable th, #retakeTable td { font-size: 0.8rem; padding: 8px 5px; }
        }
 
-
+       .spoiler-header {
+           outline: none;
+           -webkit-tap-highlight-color: transparent;
+           user-select: none;
+       }
        .spoiler-header:focus, .spoiler-header:active {
            outline: none;
            box-shadow: none;
