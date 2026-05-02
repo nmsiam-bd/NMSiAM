@@ -209,6 +209,34 @@
             
             return row;
         }
+
+        // Retake row logic
+        document.getElementById('addRetakeCourse').addEventListener('click', function() {
+            const tableBody = document.getElementById('retakeTableBody');
+            const row = document.createElement('tr');
+            let gradeOptions = '<option value="">Grade</option>';
+            for (const [grade, point] of Object.entries(gradePointMap)) {
+                gradeOptions += `<option value="${grade}">${grade}</option>`;
+            }
+        
+            row.innerHTML = `
+                <td><input type="text" class="course-input retake-name" placeholder="Course Name"></td>
+                <td><input type="number" class="course-input retake-credit" placeholder="3" min="0" step="0.5"></td>
+                <td><select class="grade-select retake-prev-grade">${gradeOptions}</select></td>
+                <td><select class="grade-select retake-curr-grade">${gradeOptions}</select></td>
+                <td class="action-cell"><button class="delete-btn retake-delete"><span class="delete-icon">×</span></button></td>
+            `;
+        
+            row.querySelectorAll('input, select').forEach(el => {
+                el.addEventListener('change', () => { if (document.getElementById('autoCalculate').checked) calculateCGPA(); });
+            });
+        
+            row.querySelector('.retake-delete').addEventListener('click', function() {
+                row.remove();
+                if (document.getElementById('autoCalculate').checked) calculateCGPA();
+            });
+            tableBody.appendChild(row);
+        });
         
         // Function to update course names after deletion
         function updateCourseNames() {
@@ -284,59 +312,30 @@
         
         // Main calculation function
         function calculateCGPA() {
-            // Get current GPA and credits
             const current = updateCurrentGPA();
-            
-            // Get previous result values
             const previousCgpaInput = document.querySelector('.previous-cgpa');
             const previousCreditsInput = document.querySelector('.previous-credits');
-            
             const previousCgpa = parseFloat(previousCgpaInput.value) || 0;
             const previousCredits = parseFloat(previousCreditsInput.value) || 0;
             
-            // Calculate previous total grade points
-            const previousTotalGradePoints = previousCgpa * previousCredits;
-            
-            // Calculate current total grade points
-            const currentTotalGradePoints = current.gpa * current.credits;
-            
-            // Calculate overall CGPA
-            let overallCgpa = 0;
+            let totalGradePoints = (previousCgpa * previousCredits) + (current.gpa * current.credits);
             let totalCredits = previousCredits + current.credits;
-            
-            if (totalCredits > 0) {
-                overallCgpa = (previousTotalGradePoints + currentTotalGradePoints) / totalCredits;
-            } else if (previousCredits > 0) {
-                // Only previous results exist
-                overallCgpa = previousCgpa;
-                totalCredits = previousCredits;
-            } else if (current.credits > 0) {
-                // Only current courses exist
-                overallCgpa = current.gpa;
-                totalCredits = current.credits;
-            }
-            
-            // Calculate percentage
-            const percentage = (overallCgpa / 4.0) * 100;
-            
-            // Update UI
+        
+            // Retake Adjustment: Subtract old points, add new points. No new credits added.
+            document.querySelectorAll('#retakeTableBody tr').forEach(row => {
+                const credit = parseFloat(row.querySelector('.retake-credit').value) || 0;
+                const prevGrade = row.querySelector('.retake-prev-grade').value;
+                const currGrade = row.querySelector('.retake-curr-grade').value;
+                if (credit > 0 && prevGrade && currGrade) {
+                    totalGradePoints += (gradePointMap[currGrade] - gradePointMap[prevGrade]) * credit;
+                }
+            });
+        
+            let overallCgpa = totalCredits > 0 ? totalGradePoints / totalCredits : 0;
             document.getElementById('cgpaValue').textContent = overallCgpa.toFixed(2);
-            document.getElementById('percentageValue').textContent = percentage.toFixed(0) + '%';
+            document.getElementById('percentageValue').textContent = ((overallCgpa / 4.0) * 100).toFixed(0) + '%';
             document.getElementById('totalCredits').textContent = totalCredits.toFixed(1);
-            document.getElementById('totalGradePoints').textContent = (previousTotalGradePoints + currentTotalGradePoints).toFixed(2);
-            
-            // Color indication for incomplete data
-            if (current.credits === 0) {
-                document.getElementById('cgpaValue').style.color = '#e74c3c';
-                document.getElementById('percentageValue').style.color = '#e74c3c';
-            } else {
-                document.getElementById('cgpaValue').style.color = '#2c3e50';
-                document.getElementById('percentageValue').style.color = '#27ae60';
-            }
-            
-            // Update course count
-            const rows = document.querySelectorAll('#coursesTableBody tr');
-            document.getElementById('totalCourses').textContent = rows.length;
+            document.getElementById('totalGradePoints').textContent = totalGradePoints.toFixed(2);
         }
         
         // Setup modal functionality
@@ -599,6 +598,18 @@
                     gradePoint: gradePoint
                 });
             });
+
+                // Inside getResultData function, after normal courses loop:
+                document.querySelectorAll('#retakeTableBody tr').forEach(row => {
+                    const name = row.querySelector('.retake-name').value || "Retake Course";
+                    const grade = row.querySelector('.retake-curr-grade').value || "N/A";
+                    courses.push({
+                        name: name + " (R)", // Adding (R) for retakes
+                        credit: row.querySelector('.retake-credit').value || "0",
+                        grade: grade,
+                        gradePoint: gradePointMap[grade]?.toFixed(2) || "0.00"
+                    });
+                });
             
             // Calculate date and time
             const now = new Date();
@@ -1262,4 +1273,17 @@
                 alert('Please allow popups to print the result.');
             }
         }
+
+        // Spoiler Toggle Logic
+        document.getElementById('toggleRetake').addEventListener('click', function() {
+            const content = document.getElementById('retakeContent');
+            const icon = document.getElementById('spoilerIcon');
+            if (content.style.display === "none" || content.style.display === "") {
+                content.style.display = "block";
+                icon.classList.add('rotate');
+            } else {
+                content.style.display = "none";
+                icon.classList.remove('rotate');
+            }
+        });
     
