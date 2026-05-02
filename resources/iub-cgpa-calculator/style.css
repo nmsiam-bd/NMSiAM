@@ -1100,4 +1100,23 @@
                 display: flex;
             }
         }
+
+       /* Retake Table Column Widths */
+       #retakeTable th:nth-child(1), #retakeTable td:nth-child(1) { width: 30%; }
+       #retakeTable th:nth-child(2), #retakeTable td:nth-child(2) { width: 15%; }
+       #retakeTable th:nth-child(3), #retakeTable td:nth-child(3) { width: 22.5%; }
+       #retakeTable th:nth-child(4), #retakeTable td:nth-child(4) { width: 22.5%; }
+       #retakeTable th:nth-child(5), #retakeTable td:nth-child(5) { width: 10%; }
+       
+       @media (max-width: 768px) {
+           #retakeTable th, #retakeTable td { font-size: 0.8rem; padding: 8px 5px; }
+       }
+
+      .spoiler-header:hover {
+            opacity: 0.8;
+       }
+       #spoilerIcon.rotate {
+            transform: rotate(45deg);
+            color: #e74c3c !important;
+       }
     
